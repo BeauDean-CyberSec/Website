@@ -4,7 +4,46 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+<html>
 <head>
 	<title>zand.dev</title>
 		<style>:root{--position: 0}*{margin:0;padding:0;box-sizing:border-box}body,html{width:100%;height:100%;font-family:share tech mono,monospace}#container{height:1e3vh;background:#000}.center{text-align:center;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)}.el-st{color:#eee;font-size:30px;font-weight:700;letter-spacing:4px}.el-sp.is-changing{animation:changing .1s infinite}.el-sp{transition:all .1s;text-shadow:0 0 10px #008f11;position:relative;will-change:transform,opacity}.el-sp:after{content:attr(data-txt);color:#eee;position:absolute;top:0;left:0;opacity:0;will-change:transform,opacity}.el-sp.is-changing:after{animation:changingAfter .4s infinite alternate}.scroll{margin-top:40px;color:#008f11;display:inline-block;padding-bottom:3px;padding-right:40px;position:relative}.scroll:after{content:'';position:absolute;left:calc(100% - 35px);top:0;animation:dots 2s infinite}@keyframes changing{0%{opacity:1}50%{opacity:.5}100%{opacity:1}}@keyframes changingAfter{0%{opacity:.3;transform:translateX(10px) scaleX(2)}50%{opacity:0;transform:translateX(0) scaleX(2)}100%{opacity:.3;transform:translateX(-10px) scaleX(2)}}@keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}}a{color:#eee;margin:48px}</style><link href="css/font-awesome.min.css" rel="stylesheet">
 </head>
+<body>
+	<div id="container"><div class="center">
+		<h1 class="el-st">
+			<span class="el-sp el-st-0-span-0" data-txt="z">z</span>
+			<span class="el-sp el-st-0-span-1" data-txt="a">a</span>
+			<span class="el-sp el-st-0-span-2" data-txt="n">n</span>
+			<span class="el-sp el-st-0-span-3" data-txt="d">d</span>
+			<span class="el-sp el-st-0-span-4" data-txt=".">.</span>
+			<span class="el-sp el-st-0-span-5" data-txt="d">d</span>
+			<span class="el-sp el-st-0-span-6" data-txt="e">e</span>
+			<span class="el-sp el-st-0-span-7" data-txt="v">v</span>
+		</h1>
+		<span class="scroll">Loading Raccoons</span>
+		<h1 style="font-size:64px;margin-top:24px">
+		<a href="https://github.com/zand"><i class="fa fa-github"></i></a>
+		<a href="https://bitbucket.org/zandraccoon/"><i class="fa fa-bitbucket"></i></a>
+		<a href="mailto:z@zand.dev"><i class="fa fa-envelope"></i></a>
+		</h1>
+	</div>
+</div>
+<script>
+var stringRandom=(function(){var data={isScrolling:false,repeat:0,target:[],letters:'*+-/@_$[%£!XO1&>',originalStrings:'',singleLetters:[]}
+Array.prototype.shuffle=function(){var input=this;for(var i=input.length-1;i>=0;i--){var randomIndex=Math.floor(Math.random()*(i+1));var itemAtIndex=input[randomIndex];input[randomIndex]=input[i];input[i]=itemAtIndex;}
+return input;}
+function checkLength(x){return Array.from(document.querySelectorAll(x)).length>0;}
+function addListener(evt,fx){window.addEventListener(evt,fx);}
+function changeLetter(letter){if(letter.textContent!=' '){letter.classList.add('is-changing');letter.style.animationDuration=Math.random().toFixed(2)+'s';var newChar=data.letters.substr(Math.random()*data.letters.length,1);letter.textContent=newChar;letter.setAttribute('data-txt',newChar);}}
+function resetLetter(letter,value){letter.classList.remove('is-changing');letter.textContent=value;letter.setAttribute('data-txt',value);}
+function divideLetters(){data.target.forEach((element,index)=>{var text=element.textContent;var textDivided='';data.originalStrings=text;for(var i=0;i<text.length;i++){textDivided+=`<span class="el-sp el-st-${index}-span-${i}" data-txt="${text.substr(i,1)}">${text.substr(i,1)}</span>`;}
+element.innerHTML=textDivided;});data.singleLetters=document.querySelectorAll('.el-sp');}
+function changeLetters(){if(data.isScrolling){data.singleLetters.forEach(function(el,index){changeLetter(el);});}
+setTimeout(changeLetters,10);}
+function resetLetters(){var randomArray=[];for(var i=0;i<data.singleLetters.length;i++){randomArray.push(i);}
+randomArray.shuffle();randomArray.forEach(function(el,index){setTimeout(function(){resetLetter(data.singleLetters[el],data.originalStrings.substring(el,el+1));},(index*20*(Math.random()*5))).toFixed(2);});}
+function updateScrollState(){clearTimeout(delay);data.isScrolling=true;var delay=setTimeout(function(){data.isScrolling=false;resetLetters();},300);};return{init:function(selector){if(checkLength(selector)){data.target=Array.from(document.querySelectorAll(selector));divideLetters();changeLetters();addListener('scroll',updateScrollState);}}}})();stringRandom.init('.el-st');
+</script>
+</body>
+</html>

@@ -7,19 +7,63 @@
 		</style>
 		<link href="css/font-awesome.min.css" rel="stylesheet">
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beau Dean's Portfolio</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+        .animated-text {
+            display: inline-block;
+        }
+        .scroll {
+            display: block;
+        }
+        .icon-wrapper {
+            font-size: 64px;
+            margin-top: 24px;
+        }
+    </style>
+</head>
 <body>
-	<div id="container"><div class="center">
-		<h1 class="el-st">
-			<span class="el-sp el-st-0-span-0" data-txt="B">B</span><span class="el-sp el-st-0-span-1" data-txt="e">e</span><span class="el-sp el-st-0-span-2" data-txt="a">a</span><span class="el-sp el-st-0-span-3" data-txt="u">u</span>
-            <span class="el-sp el-st-0-span-4" data-txt="D">D</span><span class="el-sp el-st-0-span-5" data-txt="e">e</span><span class="el-sp el-st-0-span-6" data-txt="a">a</span><span class="el-sp el-st-0-span-7" data-txt="n">n</span>
-		</h1>
-		<span class="scroll">Loading website</span>
-		<h1 style="font-size:64px;margin-top:24px">
-			<img src="/assets/github.png" alt="Beau's GitHub'"><a href="https://github.com/BeauDean-CyberSec"></a>
-			<img src="/assets/email.png" alt="Beau's Email'"<a href="mailto:beau@mytechobsession.com"></a>
-		</h1>
-	</div>
-</div>
+    <div class="center">
+        <!-- Animated Text -->
+        <h1 class="animated-text" id="animated-text-container"></h1>
+        
+        <!-- Loading message -->
+        <span class="scroll">Loading website</span>
+        
+        <!-- Social Media and Contact Information -->
+        <div class="icon-wrapper">
+            <a href="https://github.com/BeauDean-CyberSec">
+                <img src="/assets/github.png" alt="Beau's GitHub">
+            </a>
+            <a href="mailto:beau@mytechobsession.com">
+                <img src="/assets/email.png" alt="Beau's Email">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Add animation here, for example using JavaScript to set the text
+        const textContainer = document.getElementById("animated-text-container");
+        const text = 'Beau Dean';
+        let duration = 0.3;
+        
+        text.split('').forEach(char => {
+            const span = document.createElement('span');
+            span.innerText = char;
+            span.style.animationDuration = `${duration}s`;
+            duration += 0.1;  // You can change the increment value
+            textContainer.appendChild(span);
+        });
+    </script>
+</body>
+</html>
+
 <script>
 var stringRandom=(function(){var data={isScrolling:false,repeat:0,target:[],letters:'*+-/@_$[%£!XO1&>',originalStrings:'',singleLetters:[]}
 Array.prototype.shuffle=function(){var input=this;for(var i=input.length-1;i>=0;i--){var randomIndex=Math.floor(Math.random()*(i+1));var itemAtIndex=input[randomIndex];input[randomIndex]=input[i];input[i]=itemAtIndex;}
